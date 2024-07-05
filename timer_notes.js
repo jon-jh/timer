@@ -10,15 +10,17 @@
 
 // 2. since the input will be an array, we can use forEach to place a function on each item in the array.
 
+
+// to run the timer: node timer_notes.js 2 4 6
 const secondsArray = process.argv.slice(2); //take the input from terminal
 
 
-
 const timer = function(secondsArray) {
-  if (secondsArray <= 0 || secondsArray === "") {
-    console.log("HELLO THERE!!! THE TIMER NEEDS A POSITIVE NUMBER!");
+  const onlyNumbers = secondsArray.every(element => !isNaN(element));
+  if (!onlyNumbers) {
+    console.log("The timer only works with a number");
   } else {
-    console.log(secondsArray); // verify secondsArray is now an array
+    console.log(secondsArray); // log the timer and verify secondsArray is now an array
     secondsArray.forEach((secondsArray) => {
 
       let time = (secondsArray * 1000);
